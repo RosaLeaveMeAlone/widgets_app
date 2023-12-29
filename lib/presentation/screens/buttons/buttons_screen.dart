@@ -57,12 +57,41 @@ class ButtonsView extends StatelessWidget {
             OutlinedButton.icon(onPressed: (){}, icon: const Icon(Icons.access_alarms_outlined), label: const Text('data'),),
             TextButton(onPressed: (){}, child: const Text('Text')),
             TextButton.icon(onPressed: (){}, icon: const Icon(Icons.account_circle_sharp), label: const Text('data'),),
+
+            const CustomButton(),
+
             IconButton(onPressed: (){}, icon: const Icon(Icons.add)),
             IconButton(onPressed: (){}, icon: const Icon(Icons.add), style: ButtonStyle(
               backgroundColor: MaterialStatePropertyAll(colors.primary)
             ),),
           ],
         ),
+      ),
+    );
+  }
+}
+
+
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Material(
+        color: colors.primary,
+        child: InkWell(
+          onTap: (){},
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+            child: Text('Hola Mundo', style: TextStyle(color: Colors.white),) ,
+          ),
+        )
       ),
     );
   }
