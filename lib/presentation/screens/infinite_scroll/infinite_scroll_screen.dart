@@ -45,11 +45,22 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     isLoading = false;
     if( !isMounted ) return;
     setState(() {});
+    moveScrollToBottom();
   }
 
   void addFiveImages() {
     final lastId = imagesIds.last;
     imagesIds.addAll([1, 2, 3, 4, 5].map((e) => lastId + e));
+  }
+
+  void moveScrollToBottom() {
+    if(scrollController.position.pixels + 100 <= scrollController.position.maxScrollExtent) return;
+
+    scrollController.animateTo(
+      scrollController.position.maxScrollExtent + 120,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.fastOutSlowIn,
+    );
   }
 
   Future<void> onRefresh() async {
@@ -66,6 +77,7 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     setState(() {
       
     });
+    
   }
 
   @override
