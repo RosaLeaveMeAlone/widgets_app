@@ -6,6 +6,11 @@ final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
+      name: CounterScreen.name,
+      path: '/riverpod-counter',
+      builder: (context, state) => const CounterScreen(),
+    ),
+    GoRoute(
       name: HomeScreen.name,
       path: '/',
       builder: (context, state) => const HomeScreen(),
